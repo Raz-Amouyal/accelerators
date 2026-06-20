@@ -7,7 +7,8 @@
 
 #define HIST_SIZE   256
 
-__device__ void prefix_sum(int arr[], int arr_size) {
+__device__
+ void prefix_sum(int arr[], int arr_size) {
     // TODO complete according to hw1
     // ===== MY EDIT BEGIN: prefix_sum from hw1, generalised for nthreads < arr_size =====
     // Hillis-Steele scan in shared memory. Works for any blockDim.x >= 1, but the
@@ -189,25 +190,7 @@ public:
             }
         }
         return false;
-        // ===== MY EDIT END =====
-
-        /* ORIG (kept for reference, replaced by the loop above):
-        //for ()
-        //{
-            cudaError_t status = cudaStreamQuery(0); // TODO query diffrent stream each iteration
-            switch (status) {
-            case cudaSuccess:
-                // TODO return the img_id of the request that was completed.
-                //*img_id = ...
-                return true;
-            case cudaErrorNotReady:
-                return false;
-            default:
-                CUDA_CHECK(status);
-                return false;
-            }
-        //}
-        */
+        // ===== MY EDIT END =====       
     }
 };
 
